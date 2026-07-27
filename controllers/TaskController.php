@@ -28,6 +28,8 @@ class TaskController
             empty($data["description"])
         )
         {
+            http_response_code(400);
+
             echo json_encode([
                 "message" => "Task id, title and description are required."
             ]);
@@ -43,12 +45,16 @@ class TaskController
 
         if ($success)
         {
+            http_response_code(201);
+
             echo json_encode([
             "message" => "Task created successfully"
             ]);
         }
         else
         {
+            http_response_code(400);
+
             echo json_encode([
                 "message" => "Failed to create task"
             ]);
@@ -64,6 +70,8 @@ class TaskController
             empty($data['description'])
         )
         {
+            http_response_code(400);
+
             echo json_encode([
                 "message" => "User ID, title and description are required."
             ]);
@@ -79,12 +87,16 @@ class TaskController
 
         if ($success)
         {
+            http_response_code(200);
+
             echo json_encode([
             "message" => "Task updated successfully"
             ]);
         }
         else
         {
+            http_response_code(400);
+
             echo json_encode([
                 "message" => "Failed to update task"
             ]);
@@ -98,6 +110,8 @@ class TaskController
             empty($data['id'])
         )
         {
+            http_response_code(400);
+
             echo json_encode([
                 "message" => "Task ID is required."
             ]);
@@ -111,12 +125,16 @@ class TaskController
 
         if ($success)
         {
+            http_response_code(200);
+
             echo json_encode([
             "message" => "Task deleted successfully"
             ]);
         }
         else
         {
+            http_response_code(400);
+
             echo json_encode([
                 "message" => "Failed to delete task"
             ]);

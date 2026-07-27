@@ -25,10 +25,11 @@ public function register()
         empty($data["password"])
     )
     {
+        http_response_code(400);
+
         echo json_encode([
             "message" => "All fields are required."
         ]);
-
         return;
     }
 
@@ -40,12 +41,16 @@ public function register()
 
     if ($success)
     {
+        http_response_code(201);
+
         echo json_encode([
             "message" => "User registered successfully."
         ]);
     }
     else
     {
+        http_response_code(400);
+
         echo json_encode([
             "message" => "Registration failed."
         ]);
@@ -60,6 +65,8 @@ public function login()
         empty($data["password"])
     )
     {
+        http_response_code(400);
+
         echo json_encode([
             "message" => "Email and password are required."
         ]);
@@ -74,12 +81,16 @@ public function login()
 
     if ($token)
     {
+        http_response_code(200);
+
         echo json_encode([
             "token" => $token
         ]);
     }
     else
     {
+        http_response_code(400);
+
         echo json_encode([
             "message" => "Invalid email or password."
         ]);
